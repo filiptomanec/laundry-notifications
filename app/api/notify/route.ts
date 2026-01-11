@@ -81,8 +81,8 @@ export async function POST(request: NextRequest) {
       failed,
       message: `Notification sent to ${successful} device(s)`,
     })
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error sending notification:", error)
-    return NextResponse.json({ error: "Failed to send notification" }, { status: 500 })
+    return NextResponse.json({ error: error.toString() }, { status: 500 })
   }
 }
